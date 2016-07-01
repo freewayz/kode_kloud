@@ -1,0 +1,53 @@
+
+{% load static %}
+{% load staticfiles %}
+{% load rest_framework %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kamba</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+</head>
+<body>
+
+<ul>
+   <p>Flexisaf Kambar Board</p>
+
+   <button id="create-todo">Add Todo</button>
+
+   <div id="create-todo-form">
+      <form id="todo-form" action="{% url 'todo_list_create' %}" method="POST">
+       {% csrf_token %}
+       <div>
+           <p>Task Name: <input name="task"  type="text" /></p>
+           <p>Task Description: <input name="description"  type="text" /></p>
+           <p>Done: <input type="checkbox" name="done" value="true" ></p>
+        <button id="btn" type="submit">Create</button>
+       </div>
+   </form>
+   </div>
+  
+  {% verbatim %}
+  <script id="testing" type="text/x-handlebars-template">
+        <p> Using Handlerbar</p>
+      <div>{{ yourName }}</div>
+  </script>
+  {% endverbatim %}
+
+
+   <p>List Of All Todos</p>
+
+   <div>
+       {% for todo in todos %}
+           <p>{{todo.task}} : <a href="">Edit</a></p>
+       {% endfor %}
+   </div>
+</ul>
+<script type="text/javascript" src="{% static "todo/js/jquery.min.js" %}"></script>
+<script type="text/javascript" src="{% static "todo/js/jquery-ui.min.js" %}"></script>
+<script src="{% static "todo/js/handlebars.js" %}"></script>
+<script src="{% static "todo/csrf.js" %}"></script>
+<script src="{% static "todo/js/todo.js" %}"></script>
+</body>
+</html>

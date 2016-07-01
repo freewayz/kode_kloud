@@ -18,5 +18,5 @@ from django.contrib import admin
 
 
 urlpatterns = [
-    url(r'^', include('snippets.urls')),
+    url(r'^app/', include('todo.urls')),
 ]
